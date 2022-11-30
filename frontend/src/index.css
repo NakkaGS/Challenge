@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.site-header {
+  background: url(https://dev98.de/wp-content/uploads/2017/01/cropped-ctTJUiqwzSWMLaw_5oneNdpqFKTe9Jen0WF-SWl15FkpX92IB.png) no-repeat scroll top;
+  background-size: cover;
+  height: 200px;
+  margin: 10px;
+}
+
+.site-title {
+  color: #000;
+  background: #fff;
+  opacity: 0.8;
+  text-align: center;
+}
+
+.card-title {
+  text-transform: uppercase;
+}
+
+.site-img {
+  height: auto;
+  max-width: 40%;
+  max-height: 40%;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+
