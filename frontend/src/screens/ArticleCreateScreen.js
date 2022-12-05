@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 
 //Router
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 //Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createArticle } from "../actions/articleActions";
 
 //Bootstrap Components
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 //Components
 import Loader from "../components/Loader";
@@ -45,7 +45,7 @@ function ArticleCreateScreen() {
         dispatch({ type: ARTICLE_CREATE_RESET })
         history('/')
     }
-    }, [dispatch, successCreate]);
+    }, [dispatch, successCreate, history]);
 
   //when the button is pressed, it executes this line
   const submitHandler = (e) => {

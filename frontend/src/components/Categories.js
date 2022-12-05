@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from "react-router-dom"; //Library React Router Dom
 
 //Boostrap Components
-import { Row, Col, Card, ListGroup } from 'react-bootstrap'
+import { Card, ListGroup } from 'react-bootstrap'
 
 function Categories({ Articles }) {
   return (

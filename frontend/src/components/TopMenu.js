@@ -1,10 +1,10 @@
 import React from 'react'
 
-//Router
-import { LinkContainer } from "react-router-bootstrap";
-
 //Boostrap Components
-import { Navbar, Nav, Container, Button, ButtonGroup } from "react-bootstrap"; //installed using the console
+import { Navbar, Nav, Container } from "react-bootstrap"; //installed using the console
+
+//Components
+import SearchBox from "../components/SearchBox";
 
 
 function TopMenu() {
@@ -13,6 +13,7 @@ function TopMenu() {
       <Navbar bg="primary" variant="dark">
         <Container>
           <Navbar.Brand href="/">Scrapper Web</Navbar.Brand>
+          <SearchBox/>
           <Nav className="me-auto">
             <Nav.Link href="/article/create">Create Article</Nav.Link>
           </Nav>

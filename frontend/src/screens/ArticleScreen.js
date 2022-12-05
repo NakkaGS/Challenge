@@ -1,10 +1,9 @@
 //App.js->Route->ProductScreen.js
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 //Router
 import { Link, useParams, useNavigate } from "react-router-dom"; //Library React Router Dom
-import { LinkContainer } from "react-router-bootstrap";
 
 //Redux
 import { useDispatch, useSelector } from 'react-redux'
@@ -16,16 +15,12 @@ import { listArticleDetails } from '../actions/articleActions' //this is the red
 import { Row, Col, Card } from "react-bootstrap"; //Library React Bootstrap
 
 //Components
-import Rating from "../components/Rating";
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import Categories from '../components/Categories'
 
 //it was necessary to add '?' every time that we want to get a attribute from the article
 
 function ArticleScreen({ match }) {
-
-  let history = useNavigate() //for V6 it is useNavigate, NOT useHistory
 
   const dispatch = useDispatch()
 
@@ -37,36 +32,43 @@ function ArticleScreen({ match }) {
   useEffect( () => {
     dispatch(listArticleDetails(id))
 
-  }, [dispatch, id, match, history, ])
+  }, [dispatch, id, match])
 
   return(
     <div>
-        <Row>
-            <Col md={9}>
-                <Card className='me-5 ms-5 mt-2 mb-2'>
-                    {article?.image && <img src={article?.image} alt={article?.name} className="site-img"/>}
-                    <Card.Body>
+        <Link to='/' className='btn btn-light my-3'>Go Back</Link>
+        {loading ? <Loader />
+                : error ? <Message variant='danger'>{error}</Message>
+                    :  
+                    <div>
                         <Row>
-                            <Card.Title className='text-center card-title'><h2>{article?.title}</h2></Card.Title>
-                        </Row>
-                        <Row>
-                            <Col className='text-center'>
-                                <p>{article?.date} | {article?.writer} | {article?.comments} Comments</p>
+                            <Col md={9}>
+                                <Card className='me-5 ms-5 mt-2 mb-2'>
+                                    {article?.image && <img src={article?.image} alt={article?.name} className="site-img"/>}
+                                    <Card.Body>
+                                        <Row>
+                                            <Card.Title className='text-center card-title'><h2>{article?.title}</h2></Card.Title>
+                                        </Row>
+                                        <Row>
+                                            <Col className='text-center'>
+                                                <p>{article?.date} | {article?.writer} | {article?.comments} Comments</p>
+                                            </Col>
+                                        </Row>
+
+                                        <Row>
+                                            <Card.Text className='text-center'>
+                                            {<div dangerouslySetInnerHTML={{__html: article?.text}}></div>}
+                                            </Card.Text>
+                                        </Row>
+
+                                    </Card.Body>
+                                </Card>
                             </Col>
+
                         </Row>
-
-                        <Row>
-                            <Card.Text className='text-center'>
-                            {<div dangerouslySetInnerHTML={{__html: article?.text}}></div>}
-                            </Card.Text>
-                        </Row>
-
-                    </Card.Body>
-                </Card>
-            </Col>
-
-        </Row>
-
+                    </div>
+                
+        }
     </div>
   )
 };

@@ -10,14 +10,23 @@ const Article = require('../models/articleModel')
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: true }))
 
-//Get all Products
+//Get all Article
 router.get("/getallarticles", (req, res) => {
     console.log('Get all articles requested')
 
-    Article.find({} , (err , docs)=>{
+    var query = req.query.keyword
+
+    if (query == '' || typeof(query) == 'undefined'){
+        query = '' 
+    }
+
+    
+        
+    Article.find({ query } , (err , docs)=>{
 
     if(!err)
     {
+        console.log('Query: ', query)
         return res.send(docs);
     }
     else{
@@ -28,7 +37,7 @@ router.get("/getallarticles", (req, res) => {
   
 });
 
-//Get Product ID by POST using Body
+//Get Article ID by POST using Body
 router.post("/getarticlebyid", (req, res) => {
 
     console.log('Get articles by ID requested')
@@ -47,7 +56,7 @@ router.post("/getarticlebyid", (req, res) => {
   
 });
 
-//Get Product ID by POST using Body
+//Get Article by Category
 router.post("/getarticlebycategory", (req, res) => {
 
     Article.find({category : req.body.category} , (err , docs)=>{

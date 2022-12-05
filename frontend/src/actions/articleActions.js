@@ -18,11 +18,10 @@ import {
 
 //it works like a state machine
 //////////////////////////////////////////////
-export const listArticles = () => async (dispatch) => { //it is a action
+export const listArticles = (keyword) => async (dispatch) => { //it is a action
     try {
         dispatch({ type: ARTICLE_LIST_REQUEST })
-            const { data } = await axios.get(`/api/articles/getallarticles`)
-            //console.log(data)
+            const { data } = await axios.get(`/api/articles/getallarticles${keyword}`)
 
         dispatch({
             type: ARTICLE_LIST_SUCCESS,

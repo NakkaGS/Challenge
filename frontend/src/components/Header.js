@@ -1,11 +1,5 @@
 import React from 'react'
 
-//Router
-import { LinkContainer } from "react-router-bootstrap";
-
-//Boostrap Components
-import { Image } from "react-bootstrap"; //installed using the console
-
 function Header() {
   return (
     <div className='site-header'>

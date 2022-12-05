@@ -41,4 +41,10 @@ code {
   width: 50%;
 }
 
+.search-box{
+  max-width: 200px;
+  display: flex;
+  align-items: center;
+}
+
 
